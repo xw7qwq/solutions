@@ -2,13 +2,13 @@
 
 ## Branch responsibilities
 
-`main` stores the algorithm archive, `docs/project-guide` stores documentation source and its source-code baseline, and `gh-pages` stores the problem browser and generated documentation under `docs/`. Publishing documentation does not require merging it into `main`. Create temporary branches from the relevant target, validate changes, open a PR, and merge after checks pass. Confirm that the target contains the changes before deleting the temporary branch. Retain all three permanent branches. See the [organization guide](https://github.com/xw7qwq/.github/blob/main/CONTRIBUTING.md) and [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow).
+`main` stores the algorithm archive, `docs/project-guide` stores documentation source and its source-code baseline, and `gh-pages` stores the data snapshots the panel reads, published copies of the API contracts under `docs/api/`, and redirects from the retired website. Documentation is not published as a website and does not need to be merged into `main`. Create temporary branches from the relevant target, validate changes, open a PR, and merge after checks pass. Confirm that the target contains the changes before deleting the temporary branch. Retain all three permanent branches. See the [organization guide](https://github.com/xw7qwq/.github/blob/main/CONTRIBUTING.md) and [GitHub flow](https://docs.github.com/en/get-started/using-github/github-flow).
 
-The documentation branch can merge a newer `main` through a PR to refresh its source baseline. This is optional catalog maintenance, not a deployment prerequisite. After a documentation PR merges, the workflow directly updates `gh-pages/docs/`. The `Site snapshots` workflow on `main` automatically updates the two generated `gh-pages/data/` snapshots after main pushes, daily, or on manual runs. Archive tools do not commit or push Git automatically; names such as `sync/contest-submissions` identify temporary import branches, not permanent automation branches. Follow [Pages maintenance](pages.md) for the root problem browser.
+The documentation branch can merge a newer `main` through a PR to refresh its source baseline. This is optional catalog maintenance. The `Site snapshots` workflow on `main` automatically updates the two generated `gh-pages/data/` snapshots after main pushes, daily, or on manual runs. Archive tools do not commit or push Git automatically; names such as `sync/contest-submissions` identify temporary import branches, not permanent automation branches. See [Pages maintenance](pages.md) for the data snapshots and redirects.
 
-## Preview and deploy documentation
+## Preview documentation
 
-Live site: [CodeFlare Docs](https://codeflare.lucius7.dev/docs/). VitePress provides API and project documentation with full-text search, navigation, syntax highlighting, and dark mode.
+Read the documentation on GitHub. VitePress still builds a local preview with full-text search, navigation, syntax highlighting, and dark mode.
 
 Run from the repository root with Node.js 22+:
 
@@ -19,7 +19,7 @@ npm --prefix site run dev
 
 The development server runs at `http://127.0.0.1:4174/docs/`. The maintained Markdown sources are `docs/` and the root README and CONTRIBUTING files. Run `npm --prefix site run prepare:docs` to regenerate content while the server is running, then view the updated pages. Stop the server with `Ctrl+C`.
 
-Before publishing, run:
+Before opening a PR, run:
 
 ```sh
 python3 scripts/docs.py check
@@ -28,15 +28,13 @@ npm --prefix site run build
 git diff --check
 ```
 
-Push the checked documents, configuration, and lockfile to a working branch and open a PR targeting `docs/project-guide`. Merging starts publication; no additional push to `main` is needed. Keep generated `site/.content/`, `site/.vitepress/dist/`, and `node_modules` directories out of commits. Dependencies use a patched Vite version pinned in the lockfile. Retain `package-lock.json` and rerun checks and builds when updating dependencies.
+Push the checked documents, configuration, and lockfile to a working branch and open a PR targeting `docs/project-guide`. Merging publishes nothing, and no push to `main` is needed. Keep generated `site/.content/`, `site/.vitepress/dist/`, and `node_modules` directories out of commits. Dependencies use a patched Vite version pinned in the lockfile. Retain `package-lock.json` and rerun checks and builds when updating dependencies.
 
-The publishing workflow validates Markdown, OpenAPI, JSON Schema, and actual snapshots before building the site. Model field tables come directly from the schemas. Source links are converted to GitHub links so deployed pages do not point to nonexistent local directories.
+The workflow validates Markdown, OpenAPI, JSON Schema, and actual snapshots before building the site. Model field tables come directly from the schemas. Source links are converted to GitHub links so deployed pages do not point to nonexistent local directories.
 
-Only pushes to `docs/project-guide` publish documentation. The publishing job downloads verified artifacts, confirms that they still correspond to the documentation branch's latest commit, and verifies the `xw7qwq/solutions` repository, the root of `gh-pages` as the Pages source, and the `codeflare.lucius7.dev` domain. It replaces only the managed `gh-pages/docs/` directory. It shares the `codeflare-docs-pages` publication lock with `Site snapshots`, which writes only `data/site-data.json` and `data/recent-commits.json`. Both publishers set `queue: max` so new jobs do not replace pending publications. Superseded runs safely skip publication. After checking staged paths, it performs a normal push, explicitly requests a Pages build, and checks public `docs/build-info.json` and page responses. PRs only validate and build. Inspect [Actions](https://github.com/xw7qwq/solutions/actions) if any step fails; a successful push alone does not establish a successful deployment.
+When a contract in `site/public/api/` changes, copy it to `gh-pages/docs/api/` in a PR targeting `gh-pages`. Those copies are what the contracts' `$id` and `servers` URLs serve, and nothing publishes them automatically.
 
-Build output uses the `codeflare-docs` management marker. The first migration also accepts the previous `competitive-programming-docs` marker to update an existing documentation directory. This compatibility applies only after repository, branch, and domain validation; unknown directories are still protected from replacement. When migrating the API repository identity, publish new `gh-pages` snapshots before documentation that depends on them.
-
-For a rollback, create a working branch from the documentation source branch, explicitly run `git revert <commit-sha>` for the problematic commit, validate, and merge a PR back into the source branch. Keep generated `gh-pages/docs/` content under the publishing workflow's control; the next build replaces manual edits.
+For a rollback, create a working branch from the documentation source branch, explicitly run `git revert <commit-sha>` for the problematic commit, validate, and merge a PR back into the source branch.
 
 ## Update documentation and the source catalog
 
