@@ -15,7 +15,7 @@ export default defineConfig({
     nav: [
       { text: 'API 参考', link: '/api/' },
       { text: '项目规范', link: '/conventions' },
-      { text: '题库 ↗', link: api },
+      { text: '面板 ↗', link: 'https://lucius7.dev/oj/code/' },
     ],
     sidebar: [
       { text: '文档', items: [{ text: '概览', link: '/' }, { text: '文档导航', link: '/handbook' }] },
