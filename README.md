@@ -16,7 +16,7 @@
 旧地址都会跳走，查询参数和锚点保持不变：
 
 - 首页和 `code.html?path=AtCoder/abc231/a.cpp` 这样的阅读链接跳到面板的 `/oj/code/`。
-- `/docs/` 下的旧文档链接跳到 `docs/project-guide` 分支里对应的 Markdown。
+- `/docs/` 下的旧文档链接跳到 `docs/project-guide` 分支里对应的 Markdown。接口契约 `docs/api/openapi.json`、`site-data.schema.json` 和 `recent-commits.schema.json` 原样保留在原地址，它们的 `$id` 和 `servers` 指向这里。
 - 其他路径由 `404.html` 跳到面板。
 
 ## 分支职责
@@ -35,6 +35,7 @@
 | --- | --- |
 | [index.html](index.html)、[code.html](code.html)、[404.html](404.html)、[panel-redirect.js](panel-redirect.js) | 旧地址跳转 |
 | [data/](data/) | 两份 JSON 快照 |
+| [docs/api/](docs/api/) | 快照的 OpenAPI 和 JSON Schema 契约，源文件在 `docs/project-guide` 分支的 `site/public/api/` |
 | [scripts/generate-data.mjs](scripts/generate-data.mjs) | 从 `main` 的 Git 历史生成快照 |
 | [scripts/publish-data.mjs](scripts/publish-data.mjs) | 推送快照并等 Pages 部署生效 |
 | [scripts/tests/](scripts/tests/) | 发布脚本的回归测试 |
