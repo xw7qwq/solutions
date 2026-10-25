@@ -22,13 +22,13 @@ void solve() {
 
     auto cost = [&](int l, int r) {
         int a = pre[S] - pre[l], b = pre[r] - pre[S];
-        return a + b - std::min(a, b);
+        return a + b + std::min(a, b);
     };
 
     int mx = 0;
     for (int l = 0, r = S + 1; l < S; l++) {
-        while (r < S && cost(l, r) <= L) {
-            r++;
+        while (r >= 0 && cost(l, r) <= L) {
+            r--;
         }
         mx = std::max(mx, r - l - 1);
     }
