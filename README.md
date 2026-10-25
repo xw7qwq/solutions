@@ -1,14 +1,14 @@
-# CodeFlare
+# solutions
 
-Lucius7's competitive programming source code, templates, and practice archive. Most programs use C++ and are organized by Online Judge (OJ) and contest. A companion static website provides source search and reading.
+Lucius7's competitive programming source code, templates, and practice archive. Most programs use C++ and are organized by Online Judge (OJ) and contest. The [panel](https://lucius7.dev/oj/code/) provides source search and reading.
 
-[Website](https://codeflare.lucius7.dev) · [Documentation](https://codeflare.lucius7.dev/docs/) · [API reference](https://codeflare.lucius7.dev/docs/api/) · [Algorithm templates](Templates/templates) · [Archive tools](scripts/README.md) · [Report an issue](https://github.com/xw7qwq/solutions/issues) · [OJFlare](https://ojflare.lucius7.dev)
+[Panel](https://lucius7.dev/oj/code/) · [Documentation](https://github.com/xw7qwq/solutions/tree/docs/project-guide/docs) · [API reference](https://github.com/xw7qwq/solutions/blob/docs/project-guide/docs/api/index.md) · [Algorithm templates](Templates/templates) · [Archive tools](scripts/README.md) · [Report an issue](https://github.com/xw7qwq/solutions/issues) · [Solving records](https://lucius7.dev/oj/)
 
 ## Contents
 
 - **Problem source code**: standalone programs organized by platform, contest, and problem ID, covering AtCoder, Codeforces, QOJ, Luogu, CSES, and other judges.
 - **Algorithm templates**: common data structures, graph algorithms, string algorithms, and number theory implementations in [`Templates/templates/`](Templates/templates).
-- **Online reader**: filter by platform, contest, and keyword, with syntax highlighting, line numbers, copying, and raw file links.
+- **Online reader**: the panel's [/oj/code/](https://lucius7.dev/oj/code/) page searches by platform and keyword and shows each file with syntax highlighting, a copy button, and links to the problem and to GitHub.
 - **Traceable imports**: archive tools verify submission identity and source integrity, and retain provenance, verdicts, file sizes, and SHA-256 hashes.
 
 This is a personal learning and contest record. It includes unfinished drafts, submissions without an accepted (AC) verdict, and template fragments without `main`. A file's presence does not imply that it passed judging; validate each program against its original problem.
@@ -69,19 +69,19 @@ After changing archive tools, run the existing offline tests:
 python3 -m unittest discover -s scripts/tests -p 'test_archive_*.py'
 ```
 
-## Website and documentation maintenance
+## Data snapshots and documentation
 
 Choose the branch that owns the content before making changes:
 
 | Branch | Contents and entry points |
 | --- | --- |
 | [`main`](https://github.com/xw7qwq/solutions/tree/main) | This README, algorithm source code, templates, and archive tools |
-| [`gh-pages`](https://github.com/xw7qwq/solutions/tree/gh-pages) | Problem browser, source reader, data snapshots, and generated documentation; [website maintenance guide](https://github.com/xw7qwq/solutions/blob/gh-pages/README.md) |
-| [`docs/project-guide`](https://github.com/xw7qwq/solutions/tree/docs/project-guide) | Documentation source, API contracts, and project conventions; [documentation maintenance guide](https://github.com/xw7qwq/solutions/blob/docs/project-guide/README.md) |
+| [`gh-pages`](https://github.com/xw7qwq/solutions/tree/gh-pages) | Data snapshots for the panel, the scripts that generate and publish them, and redirects from the old site; [maintenance guide](https://github.com/xw7qwq/solutions/blob/gh-pages/README.md) |
+| [`docs/project-guide`](https://github.com/xw7qwq/solutions/tree/docs/project-guide) | Documentation, API contracts, and project conventions in Markdown; [documentation maintenance guide](https://github.com/xw7qwq/solutions/blob/docs/project-guide/README.md) |
 
-The website is **[codeflare.lucius7.dev](https://codeflare.lucius7.dev)**. GitHub Pages publishes from the root of `gh-pages`. Its `docs/` directory is generated output; edit documentation on `docs/project-guide`. Each branch's README describes local previews, builds, and validation.
+The panel reads `data/site-data.json` from **codeflare.lucius7.dev/data/**, which GitHub Pages publishes from the root of `gh-pages`, and reads source files from this branch through raw.githubusercontent.com. The old website at [codeflare.lucius7.dev](https://codeflare.lucius7.dev) redirects to the panel, and its `/docs/` links open the Markdown on `docs/project-guide`. Each branch's README describes its validation.
 
-The `Site snapshots` workflow refreshes `gh-pages/data/site-data.json` and `gh-pages/data/recent-commits.json` after each push to `main`, once daily, or through **Run workflow**. It validates the generated snapshots and website, publishes only those two files, explicitly requests a Pages build, and verifies the public JSON. PR runs validate without publishing. The snapshot and documentation publishers share a lock so their outputs are preserved.
+The `Site snapshots` workflow refreshes `gh-pages/data/site-data.json` and `gh-pages/data/recent-commits.json` after each push to `main`, once daily, or through **Run workflow**. It validates the generated snapshots and the publication scripts, publishes only those two files, explicitly requests a Pages build, and verifies the public JSON. PR runs validate without publishing.
 
 ## Contributing and feedback
 
@@ -98,8 +98,9 @@ Read this branch's [contribution guide](CONTRIBUTING.md) before submitting. Deta
 
 | Project | Purpose | Website |
 | --- | --- | --- |
-| [CodeFlare](https://github.com/xw7qwq/solutions) | Algorithm source and template archive with online reading | [codeflare.lucius7.dev](https://codeflare.lucius7.dev) |
-| [OJFlare](https://github.com/xw7qwq/oj) | Cross-platform submissions, contest catalogs, and personal solving statistics | [ojflare.lucius7.dev](https://ojflare.lucius7.dev) |
+| [solutions](https://github.com/xw7qwq/solutions) | Algorithm source and template archive | [lucius7.dev/oj/code/](https://lucius7.dev/oj/code/) |
+| [oj](https://github.com/xw7qwq/oj) | Cross-platform submissions, contest catalogs, and personal solving statistics | [lucius7.dev/oj/](https://lucius7.dev/oj/) |
+| [panel](https://github.com/xw7qwq/panel) | The site that shows both, with the Mac status, health, and ledger | [lucius7.dev](https://lucius7.dev/) |
 
 ## License
 
