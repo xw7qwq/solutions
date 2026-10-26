@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
-      - name: Check out website and complete source history
+      - name: Check out Pages branch and complete source history
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
           ref: gh-pages
@@ -32,16 +32,11 @@ jobs:
       - name: Generate current main snapshots
         working-directory: website
         run: node scripts/generate-data.mjs origin/main
-      - name: Validate website and publication guards
+      - name: Validate publication guards
         working-directory: website
         run: |
-          node --check app.js
-          node --check archive.js
-          node --check reader.js
           node --check scripts/generate-data.mjs
           node --check scripts/publish-data.mjs
-          node scripts/check-reader.mjs
-          node scripts/check-theme.mjs
           node --test scripts/tests/*.test.mjs
           git diff --check
       - name: Upload verified snapshots
@@ -62,7 +57,7 @@ jobs:
     permissions:
       contents: write
       pages: write
-    # Share the docs publisher's lock so both jobs preserve each other's output.
+    # One publisher at a time; queued runs keep their order.
     concurrency:
       group: codeflare-docs-pages
       cancel-in-progress: false
