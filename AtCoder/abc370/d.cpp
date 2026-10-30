@@ -9,76 +9,64 @@ void solve() {
     int H, W, Q;
     std::cin >> H >> W >> Q;
 
-    std::vector g(H, std::vector<int>(W, 1));
+    std::vector<std::set<int>> r(H), c(W);
+    for (int x = 0; x < H; x++) {
+        for (int y = 0; y < W; y++) {
+            r[x].insert(y);
+        }
+    }
+    for (int y = 0; y < W; y++) {
+        for (int x = 0; x < H; x++) {
+            c[y].insert(x);
+        }
+    }
     while (Q--) {
         int x, y;
         std::cin >> x >> y;
         x--, y--;
-
-        if (g[x][y] == 1) {
-            g[x][y] = 0;
+        if (r[x].find(y) != r[x].end()) {
+            r[x].erase(y);
+            c[y].erase(x);
         } else {
-            int lo = 0, hi = y - 1;
-            while (lo < hi) {
-                int m = (lo + hi + 1) >> 1;
-                if (g[x][m] == 1) {
-                    lo = m;
-                } else {
-                    hi = m - 1;
-                }
-            }
-            if (g[x][lo] == 1) {
-                g[x][lo] = 0;
+            auto it = r[x].lower_bound(y);
+            if (it != r[x].begin()) {
+                it--;
+                auto ny = *it;
+                r[x].erase(ny);
+                c[ny].erase(x);
             }
 
-            lo = std::min(W - 1, y + 1), hi = W - 1;
-            while (lo < hi) {
-                int m = (lo + hi + 1) >> 1;
-                if (g[x][m] == 1) {
-                    lo = m;
-                } else {
-                    hi = m - 1;
-                }
-            }
-            if (g[x][lo] == 1) {
-                g[x][lo] = 0;
+            it = r[x].lower_bound(y);
+            if (it != r[x].end()) {
+                auto ny = *it;
+                r[x].erase(ny);
+                c[ny].erase(x);
             }
 
-            lo = 0, hi = x - 1;
-            while (lo < hi) {
-                int m = (lo + hi + 1) >> 1;
-                if (g[m][y] == 1) {
-                    lo = m;
-                } else {
-                    hi = m - 1;
-                }
-            }
-            if (g[lo][y] == 1) {
-                g[lo][y] = 0;
+            it = c[y].lower_bound(x);
+            if (it != c[y].begin()) {
+                it--;
+                auto nx = *it;
+                c[y].erase(nx);
+                r[nx].erase(y);
             }
 
-            lo = std::min(H - 1, x + 1), hi = H - 1;
-            while (lo < hi) {
-                int m = (lo + hi + 1) >> 1;
-                if (g[m][y] == 1) {
-                    lo = m;
-                } else {
-                    hi = m - 1;
-                }
-            }
-            if (g[lo][y] == 1) {
-                g[lo][y] = 0;
+            it = c[y].lower_bound(x);
+            if (it != c[y].end()) {
+                auto nx = *it;
+                c[y].erase(nx);
+                r[nx].erase(y);
             }
         }
     }
 
-    int cnt = 0;
-    for (int x = 0; x < H; x++) {
-        for(int y = 0; y < W; y++) {
-            cnt += g[x][y];
-        }
+    int sum = 0;
+    for (int i = 0; i < H; i++) {
+        sum += r[i].size();
     }
-    std::cout << cnt << "\n";
+    std::cout << sum << "\n";
+
+    
 }
 
 signed main() {
