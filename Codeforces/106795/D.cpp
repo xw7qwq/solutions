@@ -11,24 +11,28 @@ void solve() {
 
     std::string s;
     std::cin >> s;
-    std::reverse(s.begin(), s.end());
-
-    std::vector<char> stk;
-    while (!s.empty()) {
-        auto c = s.back();
-        s.pop_back();
-        if (!stk.empty() && stk.back() == c) {
-            stk.pop_back();
-            if (c == 'V') {
-                s.push_back('G');
-            } else {
-                s.push_back('V');
-            }
-        } else {
-            stk.push_back(c);
+    
+    bool f = true;
+    for (int i = 1; i < s.size(); i++) {
+        if (s[i] == s[i - 1]) {
+            f = false;
+            break;
         }
     }
-    std::cout << stk.size() << "\n";
+
+    if (f) {
+        std::cout << n << "\n";
+        return;
+    }
+
+
+    int u = ((std::count(s.begin(), s.end(), 'V') - std::count(s.begin(), s.end(), 'G')) % 3 + 3) % 3;
+    if (u == 0) {
+        std::cout << 2 << "\n";
+    } else {
+        std::cout << 1 << "\n";
+    }
+
 }
 
 signed main() {
