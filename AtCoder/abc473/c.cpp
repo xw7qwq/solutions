@@ -9,14 +9,18 @@ void solve() {
     int n, k;
     std::cin >> n >> k;
 
-    std::map<int, int> cnt;
+    std::vector<int> cnt(k);
     for (int i = 0; i < n; i++) {
         int a;
         std::cin >> a;
+        a--;
         cnt[a]++;
     }
 
-    
+    std::sort(cnt.begin(), cnt.end());
+
+    auto it = std::lower_bound(cnt.begin(), cnt.end(), cnt.back() - 1);
+    std::cout << cnt.end() - it << "\n";
 }
 
 signed main() {
