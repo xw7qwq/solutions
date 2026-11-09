@@ -7,12 +7,12 @@ Read the [organization contribution guide](https://github.com/xw7qwq/.github/blo
 | Target branch | Contents |
 | --- | --- |
 | `main` | Algorithm source code, templates, provenance receipts, and archive tools |
-| `docs/project-guide` | Project documentation, API contracts, and documentation site source |
-| `gh-pages` | Problem browser source, data snapshots, and the generated `docs/` website |
+| `docs/project-guide` | Project documentation and API contracts |
+| `gh-pages` | Data snapshots for the panel, their scripts, and redirects from the old site |
 
-Create a temporary branch from the relevant target, such as `fix/archive-import`, `docs/update-tooling`, or `sync/contest-submissions`. After validation, open a PR against that target and describe the reason for the change and actual check results. Merge after checks pass, then confirm the target contains the changes before deleting the working branch. Keep all three permanent branches; do not merge the entire website branch into the algorithm branch.
+Create a temporary branch from the relevant target, such as `fix/archive-import`, `docs/update-tooling`, or `sync/contest-submissions`. After validation, open a PR against that target and describe the reason for the change and actual check results. Merge after checks pass, then confirm the target contains the changes before deleting the working branch. Keep all three permanent branches; do not merge the entire Pages branch into the algorithm branch.
 
-Archive scripts operate only on local files and do not commit or push Git changes. New provenance records and source files also enter `main` through a working branch and PR. The documentation publishing workflow updates `gh-pages/docs/` directly. That directory is generated output and must not be edited manually. Manual documentation and website changes also require PRs.
+Archive scripts operate only on local files and do not commit or push Git changes. New provenance records and source files also enter `main` through a working branch and PR. Manual documentation and `gh-pages` changes also require PRs.
 
 ## Validation before submission
 
@@ -26,9 +26,9 @@ git diff --check
 
 The `Archive` workflow runs offline tests and a read-only integrity audit on every PR and push to `main` or `docs/project-guide`. Its stable required check name is `check`. The audit checks provenance receipts, hashes, byte counts, and encodings of imported source files. It does not run algorithms or establish an AC verdict.
 
-The `Site snapshots` workflow validates the website and current `main` snapshots on PRs targeting `main`. Pushes to `main`, daily scheduled runs, and manual runs also publish the two generated `gh-pages/data/` snapshots and verify the Pages build and public data. Like the documentation publisher, this automation updates generated output directly; manual website changes still use PRs targeting `gh-pages`.
+The `Site snapshots` workflow validates the publication scripts and current `main` snapshots on PRs targeting `main`. Pushes to `main`, daily scheduled runs, and manual runs also publish the two generated `gh-pages/data/` snapshots and verify the Pages build and public data. This automation updates generated output directly; manual changes to `gh-pages` still use PRs targeting `gh-pages`.
 
-Compile individual problem changes separately and provide the original problem link, reproduction input, and expected output. Include a minimal invocation and boundary checks for template changes. Each branch's README describes additional documentation and website checks. Preserve source paths and verified provenance; successful compilation or file existence is not evidence of an accepted submission.
+Compile individual problem changes separately and provide the original problem link, reproduction input, and expected output. Include a minimal invocation and boundary checks for template changes. Each branch's README describes its additional checks. Preserve source paths and verified provenance; successful compilation or file existence is not evidence of an accepted submission.
 
 ## Commit conventions
 
