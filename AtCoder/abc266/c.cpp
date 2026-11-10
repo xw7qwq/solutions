@@ -12,11 +12,11 @@ void solve() {
     }
 
     for (int x = 0; x < 4; x++) {
-        int y = (x + 1) % 4;
-        int z = (x + 2) % 4;
+        int z = (x + 1) % 4;
+        int y = (x + 3) % 4;
         
-        int a = p[y].first - p[x].first, b = p[y].second - p[x].second;
-        int c = p[z].first - p[y].first, d = p[z].second - p[y].second;
+        int a = p[z].first - p[x].first, b = p[z].second - p[x].second;
+        int c = p[y].first - p[x].first, d = p[y].second - p[x].second;
         if (a * d - b * c < 0) {
             std::cout << "No\n";
             return;
