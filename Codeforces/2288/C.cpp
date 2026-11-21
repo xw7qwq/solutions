@@ -6,23 +6,25 @@ using i64 = long long;
 using u64 = unsigned long long;
 
 void solve() {
-    int n;
-    std::cin >> n;
+    int n, x;
+    std::cin >> n >> x;
 
-    std::string s;
-    for (int i = 0; i < n - 1; i++) {
-        if (i == 0) {
-            s.push_back('+');
-        } else {
-            s += "--+";
-        }
+    std::vector<int> a(n);
+    for (int i = 0; i < n; i++) {
+        std::cin >> a[i];
     }
-    std::cout << s << std::endl;
 
-    int k;
-    std::cin >> k;
+    std::sort(a.begin(), a.end());
 
-    std::cout << n + (k + 2) / 3 << std::endl;
+    for (int i = 0; i < n; i++) {
+        a[i] = (a[i] + x - 1) / x;
+    }
+
+    int ans = 0;
+    for (int i = 0; i < n - 1; i++) {
+        ans += std::max(0LL, a[i] - i - ans - 1);
+    }
+    std::cout << ans << "\n";
 }
 
 signed main() {
