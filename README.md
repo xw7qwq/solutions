@@ -1,8 +1,8 @@
-# CodeFlare · Project documentation
+# solutions · Project documentation
 
-CodeFlare is a competitive programming archive of C++ solutions, templates, and practice, organized by online judge and contest. This branch, `docs/project-guide`, maintains project guides and the API contracts of the data snapshots that the [panel](https://lucius7.dev/oj/code/) reads. Read the documentation here on GitHub; VitePress remains for local previews.
+This repository is a competitive programming archive of C++ solutions, templates, and practice, organized by online judge and contest. This branch, `docs/project-guide`, maintains project guides and the API contracts of the data snapshots that the [panel](https://panel.lucius7.dev/oj/code/) reads. Read the documentation here on GitHub; VitePress remains for local previews.
 
-[Panel](https://lucius7.dev/oj/code/) · [Documentation index](docs/README.md) · [Source repository](https://github.com/xw7qwq/solutions) · [Source catalog](docs/catalog.md) · [Contributing](CONTRIBUTING.md)
+[Panel](https://panel.lucius7.dev/oj/code/) · [Documentation index](docs/README.md) · [Source repository](https://github.com/xw7qwq/solutions) · [Source catalog](docs/catalog.md) · [Contributing](CONTRIBUTING.md)
 
 ## Documentation
 
@@ -89,7 +89,7 @@ Create a working branch from `docs/project-guide`, stage changes by path, and de
 
 ## Domain
 
-The panel shows the archive at [lucius7.dev/oj/code/](https://lucius7.dev/oj/code/). The static API lives under `/data/` on **codeflare.lucius7.dev**, which GitHub Pages publishes from the root of `gh-pages`, and the contracts are served from `/docs/api/` there. Other links under the old `/docs/` site redirect to this branch's Markdown.
+The panel shows the archive at [panel.lucius7.dev/oj/code/](https://panel.lucius7.dev/oj/code/). The static API lives under `/data/` on **codeflare.lucius7.dev**, which GitHub Pages publishes from the root of `gh-pages`, and the contracts are served from `/docs/api/` there. Other links under the old `/docs/` site redirect to this branch's Markdown.
 
 When a contract in `site/public/api/` changes, copy it to `gh-pages/docs/api/` in a PR targeting `gh-pages`; those copies are what the `$id` and `servers` URLs serve.
 

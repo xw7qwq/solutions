@@ -1,6 +1,6 @@
 # Contributing
 
-Read the [organization contribution guide](https://github.com/xw7qwq/.github/blob/main/CONTRIBUTING.md). Choose the target branch before editing: `main` for algorithms, `docs/project-guide` for documentation, or `gh-pages` for the website. See [Maintenance](docs/maintenance.md) for branch responsibilities and synchronization.
+Read the [organization contribution guide](https://github.com/xw7qwq/.github/blob/main/CONTRIBUTING.md). Choose the target branch before editing: `main` for algorithms, `docs/project-guide` for documentation, or `gh-pages` for the data snapshots and redirects. See [Maintenance](docs/maintenance.md) for branch responsibilities and synchronization.
 
 ## Make a change
 
@@ -18,7 +18,7 @@ Read the [organization contribution guide](https://github.com/xw7qwq/.github/blo
 | Rename or move | Preserve traceable source mappings and check CPH path rules and Pages inclusion rules |
 | Archive tools or imported source | Run offline archive tests and the read-only provenance audit below |
 | Documentation | Run documentation checks, API contract checks, and a build; see [Maintenance](docs/maintenance.md) |
-| Website | Validate assets, snapshots, and affected interactions using [website maintenance](docs/pages.md) |
+| Data snapshots or redirects | Regenerate and check the snapshots as described in [Pages](docs/pages.md) |
 
 If the source branch does not yet include documentation checks, run the relevant checks available on that branch and update documentation separately on its branch. Run archive tests and the integrity audit from the repository root:
 

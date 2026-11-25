@@ -1,6 +1,6 @@
 # GitHub Pages 维护
 
-旧的根题库和阅读页已经并入[面板](https://lucius7.dev/oj/code/)。`gh-pages` 现在只发布面板读取的两份数据快照、快照 API 契约的发布副本，以及把旧地址转到面板的跳转页。文档不再发布成网站，直接在 GitHub 上阅读本分支的 Markdown。
+旧的根题库和阅读页已经并入[面板](https://panel.lucius7.dev/oj/code/)。`gh-pages` 现在只发布面板读取的两份数据快照、快照 API 契约的发布副本，以及把旧地址转到面板的跳转页。文档不再发布成网站，直接在 GitHub 上阅读本分支的 Markdown。
 
 ## 分支与发布边界
 

@@ -14,7 +14,7 @@
 | [开发工具](tooling.md) | VS Code、CPH、Companion relay 如何迁移和启动？ |
 | [贡献指南](../CONTRIBUTING.md) | 一次修改如何组织、检查和提交？ |
 | [维护流程](maintenance.md) | 分支如何同步，文档如何更新、验证和发布？ |
-| [GitHub Pages](pages.md) | 网站如何取数据、本地运行、发布和排障？ |
+| [GitHub Pages](pages.md) | `gh-pages` 现在发布什么，快照如何重新生成和检查？ |
 
 ## 阅读与维护约定
 
