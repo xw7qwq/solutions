@@ -1,6 +1,6 @@
 # 题库 API 与项目规范
 
-[题目与代码](https://codeflare.lucius7.dev/) · [API 接入](api/index.md) · [代码规范](conventions.md)
+[题目与代码](https://panel.lucius7.dev/oj/code/) · [API 接入](api/index.md) · [代码规范](conventions.md)
 
 ## API 参考
 
@@ -25,4 +25,4 @@ GET https://codeflare.lucius7.dev/data/site-data.json
 
 ## 维护入口
 
-文档源位于 `docs/project-guide`，推送该分支后自动构建并发布到当前地址，无需合并到 `main`。详见[文档部署](maintenance.md)。题库网站的维护见 [Pages 文档](pages.md)。
+文档源位于 `docs/project-guide`，直接在 GitHub 上阅读 Markdown。推送该分支只运行检查和构建，不再发布网站，也无需合并到 `main`，详见[维护流程](maintenance.md)。`gh-pages` 上的数据快照和旧地址的跳转见 [Pages 文档](pages.md)。

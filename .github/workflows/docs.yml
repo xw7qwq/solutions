@@ -35,13 +35,6 @@ jobs:
           npm --prefix site audit --audit-level=high
           npm --prefix site run check:api
           npm --prefix site run build
-      - name: Upload documentation website
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
-        with:
-          name: docs-site
-          path: site/.vitepress/dist
-          if-no-files-found: error
-          retention-days: 7
 
   archive:
     runs-on: ubuntu-24.04
@@ -65,37 +58,3 @@ jobs:
           ARCHIVE_RESULT: ${{ needs.archive.result }}
           DOCS_RESULT: ${{ needs.documentation.result }}
         run: test "$ARCHIVE_RESULT" = success && test "$DOCS_RESULT" = success
-
-  publish:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/docs/project-guide'
-    needs: check
-    runs-on: ubuntu-24.04
-    timeout-minutes: 15
-    permissions:
-      contents: write
-      pages: write
-    concurrency:
-      group: codeflare-docs-pages
-      cancel-in-progress: false
-      queue: max
-    steps:
-      - name: Check out publication script
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-        with:
-          path: source
-          persist-credentials: false
-      - name: Check out Pages branch
-        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
-        with:
-          ref: gh-pages
-          path: published
-          fetch-depth: 0
-      - name: Download verified website
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
-        with:
-          name: docs-site
-          path: artifact
-      - name: Publish docs folder and verify Pages build
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: node source/site/publish.mjs published artifact

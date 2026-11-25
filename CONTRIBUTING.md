@@ -1,6 +1,6 @@
 # Contributing
 
-Read the [organization contribution guide](https://github.com/xw7qwq/.github/blob/main/CONTRIBUTING.md). Choose the target branch before editing: `main` for algorithms, `docs/project-guide` for documentation, or `gh-pages` for the website. See [Maintenance](docs/maintenance.md) for branch responsibilities and synchronization.
+Read the [organization contribution guide](https://github.com/xw7qwq/.github/blob/main/CONTRIBUTING.md). Choose the target branch before editing: `main` for algorithms, `docs/project-guide` for documentation, or `gh-pages` for the data snapshots and redirects. See [Maintenance](docs/maintenance.md) for branch responsibilities and synchronization.
 
 ## Make a change
 
@@ -18,7 +18,7 @@ Read the [organization contribution guide](https://github.com/xw7qwq/.github/blo
 | Rename or move | Preserve traceable source mappings and check CPH path rules and Pages inclusion rules |
 | Archive tools or imported source | Run offline archive tests and the read-only provenance audit below |
 | Documentation | Run documentation checks, API contract checks, and a build; see [Maintenance](docs/maintenance.md) |
-| Website | Validate assets, snapshots, and affected interactions using [website maintenance](docs/pages.md) |
+| Data snapshots or redirects | Regenerate and check the snapshots as described in [Pages](docs/pages.md) |
 
 If the source branch does not yet include documentation checks, run the relevant checks available on that branch and update documentation separately on its branch. Run archive tests and the integrity audit from the repository root:
 
@@ -29,7 +29,7 @@ python3 scripts/archive_verify.py
 
 The archive job, included in the required `check` result, verifies tool behavior and source integrity where provenance receipts exist. It does not execute algorithms or establish an AC verdict. Archive tools read and write local files without committing or pushing Git. New sources enter `main` through a temporary branch such as `sync/` and a PR, preserving existing source files. See the [archive tool guide](scripts/README.md) for operations and receipt formats.
 
-All manual changes require PRs. The documentation publishing workflow writes directly to the generated `gh-pages/docs/` directory. The `Site snapshots` workflow on `main` writes only the generated `gh-pages/data/site-data.json` and `gh-pages/data/recent-commits.json` after main pushes, daily, or on manual runs; PR runs only validate. Both publishers share a lock and preserve pending jobs with `queue: max`. Do not edit generated output manually. Keep the full `gh-pages` branch separate from other branches.
+All manual changes require PRs. The `Site snapshots` workflow on `main` writes only the generated `gh-pages/data/site-data.json` and `gh-pages/data/recent-commits.json` after main pushes, daily, or on manual runs; PR runs only validate. It preserves pending jobs with `queue: max`. Do not edit generated output manually. Keep the full `gh-pages` branch separate from other branches.
 
 ## Commit messages
 
