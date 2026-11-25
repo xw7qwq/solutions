@@ -1,14 +1,14 @@
 # solutions
 
-Lucius7's competitive programming source code, templates, and practice archive. Most programs use C++ and are organized by Online Judge (OJ) and contest. The [panel](https://lucius7.dev/oj/code/) provides source search and reading.
+Lucius7's competitive programming source code, templates, and practice archive. Most programs use C++ and are organized by Online Judge (OJ) and contest. The [panel](https://panel.lucius7.dev/oj/code/) provides source search and reading.
 
-[Panel](https://lucius7.dev/oj/code/) · [Documentation](https://github.com/xw7qwq/solutions/tree/docs/project-guide/docs) · [API reference](https://github.com/xw7qwq/solutions/blob/docs/project-guide/docs/api/index.md) · [Algorithm templates](Templates/templates) · [Archive tools](scripts/README.md) · [Report an issue](https://github.com/xw7qwq/solutions/issues) · [Solving records](https://lucius7.dev/oj/)
+[Panel](https://panel.lucius7.dev/oj/code/) · [Documentation](https://github.com/xw7qwq/solutions/tree/docs/project-guide/docs) · [API reference](https://github.com/xw7qwq/solutions/blob/docs/project-guide/docs/api/index.md) · [Algorithm templates](Templates/templates) · [Archive tools](scripts/README.md) · [Report an issue](https://github.com/xw7qwq/solutions/issues) · [Solving records](https://panel.lucius7.dev/oj/)
 
 ## Contents
 
 - **Problem source code**: standalone programs organized by platform, contest, and problem ID, covering AtCoder, Codeforces, QOJ, Luogu, CSES, and other judges.
 - **Algorithm templates**: common data structures, graph algorithms, string algorithms, and number theory implementations in [`Templates/templates/`](Templates/templates).
-- **Online reader**: the panel's [/oj/code/](https://lucius7.dev/oj/code/) page searches by platform and keyword and shows each file with syntax highlighting, a copy button, and links to the problem and to GitHub.
+- **Online reader**: the panel's [/oj/code/](https://panel.lucius7.dev/oj/code/) page searches by platform and keyword and shows each file with syntax highlighting, a copy button, and links to the problem and to GitHub.
 - **Traceable imports**: archive tools verify submission identity and source integrity, and retain provenance, verdicts, file sizes, and SHA-256 hashes.
 
 This is a personal learning and contest record. It includes unfinished drafts, submissions without an accepted (AC) verdict, and template fragments without `main`. A file's presence does not imply that it passed judging; validate each program against its original problem.
@@ -98,9 +98,9 @@ Read this branch's [contribution guide](CONTRIBUTING.md) before submitting. Deta
 
 | Project | Purpose | Website |
 | --- | --- | --- |
-| [solutions](https://github.com/xw7qwq/solutions) | Algorithm source and template archive | [lucius7.dev/oj/code/](https://lucius7.dev/oj/code/) |
-| [oj](https://github.com/xw7qwq/oj) | Cross-platform submissions, contest catalogs, and personal solving statistics | [lucius7.dev/oj/](https://lucius7.dev/oj/) |
-| [panel](https://github.com/xw7qwq/panel) | The site that shows both, with the Mac status, health, and ledger | [lucius7.dev](https://lucius7.dev/) |
+| [solutions](https://github.com/xw7qwq/solutions) | Algorithm source and template archive | [panel.lucius7.dev/oj/code/](https://panel.lucius7.dev/oj/code/) |
+| [oj](https://github.com/xw7qwq/oj) | Cross-platform submissions, contest catalogs, and personal solving statistics | [panel.lucius7.dev/oj/](https://panel.lucius7.dev/oj/) |
+| [panel](https://github.com/xw7qwq/panel) | The site that shows both, with the Mac status, health, and ledger | [panel.lucius7.dev](https://panel.lucius7.dev/) |
 
 ## License
 
