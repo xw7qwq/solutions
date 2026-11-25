@@ -1,8 +1,8 @@
 # solutions · gh-pages
 
-本分支给[面板](https://lucius7.dev/oj/code/)发布题解索引快照，不再有自己的页面。题解搜索和源码阅读都在面板的 [/oj/code/](https://lucius7.dev/oj/code/)。
+本分支给[面板](https://panel.lucius7.dev/oj/code/)发布题解索引快照，不再有自己的页面。题解搜索和源码阅读都在面板的 [/oj/code/](https://panel.lucius7.dev/oj/code/)。
 
-[面板](https://lucius7.dev/oj/code/) · [源码仓库](https://github.com/xw7qwq/solutions) · [文档](https://github.com/xw7qwq/solutions/tree/docs/project-guide/docs) · [反馈问题](https://github.com/xw7qwq/solutions/issues)
+[面板](https://panel.lucius7.dev/oj/code/) · [源码仓库](https://github.com/xw7qwq/solutions) · [文档](https://github.com/xw7qwq/solutions/tree/docs/project-guide/docs) · [反馈问题](https://github.com/xw7qwq/solutions/issues)
 
 ## 发布的内容
 
